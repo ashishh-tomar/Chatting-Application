@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +17,10 @@ public class Client extends JFrame implements ActionListener{
 	JPanel p1;
 	JTextArea t1;
 	JButton b1;
-	JTextArea t2;
+	static JTextArea t2;
+	static Socket s;
+	static DataInputStream din;
+	static DataOutputStream dout;
 	
 	Client()
 	{
@@ -162,14 +168,39 @@ public class Client extends JFrame implements ActionListener{
 	{
 		//When clicking on send button some action has to be performed for thts we use this method
 		
-		
+		try {
 		String out=t1.getText();
-		t2.setText(t2.getText()+"\n"+"\t\t"+out);
+		t2.setText("  "+t2.getText()+"\n"+"\t\t"+out);
+		dout.writeUTF((out)); //We have to send message when send button click
 		t1.setText("");//After sending our text fild should become blank
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public static void main(String[] args)
 	{
 		new Client().setVisible(true);
+		
+		try {
+			
+			s=new Socket("127.0.0.1",6001); //we have to pass ip adress but in our case its local to we enter it,now second argument is socket no. which must be same as of server class.
+			
+			din=new DataInputStream(s.getInputStream());
+			dout=new DataOutputStream(s.getOutputStream());
+			
+			String messageInput="";
+			
+			messageInput=din.readUTF();
+			t2.setText(t2.getText()+"\n"+messageInput);
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
 	}
 }
