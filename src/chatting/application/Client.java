@@ -1,4 +1,5 @@
 package chatting.application;
+
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
-public class Server extends JFrame implements ActionListener{
+public class Client extends JFrame implements ActionListener{
 	
 	
 	JPanel p1;
@@ -15,7 +16,7 @@ public class Server extends JFrame implements ActionListener{
 	JButton b1;
 	JTextArea t2;
 	
-	Server()
+	Client()
 	{
 		//Start of Panel Section
 		p1=new JPanel();
@@ -53,7 +54,7 @@ public class Server extends JFrame implements ActionListener{
 		JLabel l2=new JLabel();
 		l2.setBounds(50,10,50,50);
 		p1.add(l2);    //To add image above panel 
-		ImageIcon icon2=new ImageIcon(ClassLoader.getSystemResource("chatting/application/icons/1.png"));
+		ImageIcon icon2=new ImageIcon(ClassLoader.getSystemResource("chatting/application/icons/2.png"));
 		Image img2=icon2.getImage();
 		Image newImg2=img2.getScaledInstance(l2.getWidth(), l2.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image2=new ImageIcon(newImg2);
@@ -61,7 +62,7 @@ public class Server extends JFrame implements ActionListener{
 		
 		
 		//Name
-		JLabel l3=new JLabel("SAM");
+		JLabel l3=new JLabel("John");
 		l3.setFont(new Font("SAN_SERIF",Font.BOLD,20));
 		l3.setForeground(Color.WHITE);
 		l3.setBounds(110,20,100,20);
@@ -148,7 +149,7 @@ public class Server extends JFrame implements ActionListener{
 		setLayout(null);
 		
 		setSize(450,700);
-		setLocation(400,200);
+		setLocation(1100,200);
 		
 		
 		setUndecorated(true);
@@ -169,6 +170,6 @@ public class Server extends JFrame implements ActionListener{
 	
 	public static void main(String[] args)
 	{
-		new Server().setVisible(true);
+		new Client().setVisible(true);
 	}
 }
