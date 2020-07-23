@@ -14,6 +14,10 @@ import java.awt.*;
 public class Server extends JFrame implements ActionListener{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel p1;
 	JTextArea t1;
 	JButton b1;

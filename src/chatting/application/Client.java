@@ -14,6 +14,10 @@ import java.awt.*;
 public class Client extends JFrame implements ActionListener{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel p1;
 	JTextArea t1;
 	JButton b1;
@@ -170,7 +174,7 @@ public class Client extends JFrame implements ActionListener{
 		
 		try {
 		String out=t1.getText();
-		t2.setText("  "+t2.getText()+"\n"+"\t\t"+out);
+		t2.setText(t2.getText()+"\n"+"\t\t"+out);
 		dout.writeUTF((out)); //We have to send message when send button click
 		t1.setText("");//After sending our text fild should become blank
 		}
